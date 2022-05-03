@@ -1,0 +1,22 @@
+@mixin Ring ($height, $width, $color) {
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    border: $height/12 solid $color;
+    filter: drop-shadow($height/20 $height/20 2px darken($color, 10%));
+}
+
+.medium-ring {
+    @include Ring(50px, 50px, #fe6601);
+}
+
+.big-ring {
+    @include Ring(200px, 200px, #fbca05);
+}
+
+@for $i from 1 through 6 {
+    .small-ring:nth-child(#{$i}) {
+      @include Ring(10px * $i, 10px * $i , #222);
+      margin-left : $i * -2;
+    }
+  }
